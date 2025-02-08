@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckk0x2ybcogay"]
+
+[ext_resource type="Texture2D" uid="uid://u8okmvtkugj8" path="res://assets/Ghost Plank.png" id="1_00i04"]
+
+[node name="Ghost Plank" type="Node2D"]
+
+[node name="GhostPlank" type="Sprite2D" parent="."]
+light_mask = 4
+texture = ExtResource("1_00i04")

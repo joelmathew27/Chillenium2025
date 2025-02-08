@@ -1,12 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://3nilladdtfq6"]
+[gd_scene load_steps=20 format=3 uid="uid://3nilladdtfq6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_i3mis"]
-[ext_resource type="Texture2D" uid="uid://fbpbu5vtfco4" path="res://assets/Chillenium Player.png" id="1_qpjwr"]
 [ext_resource type="Material" uid="uid://wxqrw8npf3fp" path="res://misc/outline.tres" id="2_5xrop"]
+[ext_resource type="Texture2D" uid="uid://ch7i5wtx0ac0a" path="res://assets/Idle_Animation.png" id="3_ed88t"]
 [ext_resource type="Texture2D" uid="uid://b4ta5n3iq141y" path="res://assets/Chillenium Eye.png" id="3_heix3"]
 [ext_resource type="Texture2D" uid="uid://1cfscwe1pkgn" path="res://assets/Running_Animation.png" id="4_dn826"]
 [ext_resource type="Texture2D" uid="uid://beqel703lirrt" path="res://assets/light (1).png" id="4_iowc1"]
 [ext_resource type="PackedScene" uid="uid://bn0txxr0o6pcp" path="res://scenes/trail_particles.tscn" id="5_sg7py"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey7c2"]
+atlas = ExtResource("3_ed88t")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji8bp"]
+atlas = ExtResource("3_ed88t")
+region = Rect2(128, 0, 128, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eywtl"]
 atlas = ExtResource("4_dn826")
@@ -39,12 +47,15 @@ region = Rect2(768, 0, 128, 256)
 [sub_resource type="SpriteFrames" id="SpriteFrames_ojrx3"]
 animations = [{
 "frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_ey7c2")
+}, {
 "duration": 1.0,
-"texture": ExtResource("1_qpjwr")
+"texture": SubResource("AtlasTexture_ji8bp")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -76,7 +87,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_481r3"]
 size = Vector2(32, 50)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2k5m4"]
+radius = 2.0
+height = 11.9976
+
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 23
 script = ExtResource("1_i3mis")
 
 [node name="ChilleniumPlayer" type="AnimatedSprite2D" parent="."]
@@ -85,9 +101,8 @@ material = ExtResource("2_5xrop")
 position = Vector2(0, -32)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_ojrx3")
-animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -25)
 shape = SubResource("RectangleShape2D_481r3")
 
@@ -96,15 +111,10 @@ visible = false
 position = Vector2(0, -61)
 texture = ExtResource("3_heix3")
 
-[node name="PointLight2D" type="PointLight2D" parent="Eye"]
-energy = 2.0
-blend_mode = 1
-texture = ExtResource("4_iowc1")
-texture_scale = 0.5
-
 [node name="PointLight2D2" type="PointLight2D" parent="Eye"]
-light_mask = 3
-energy = 3.0
+light_mask = 0
+color = Color(1, 0.756863, 0, 1)
+range_item_cull_mask = 7
 texture = ExtResource("4_iowc1")
 texture_scale = 0.5
 
@@ -112,3 +122,24 @@ texture_scale = 0.5
 light_mask = 0
 visibility_layer = 2
 position = Vector2(0, -61)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -35)
+zoom = Vector2(1.5, 1.5)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+enabled = false
+color = Color(1, 0.92549, 0.741176, 1)
+energy = 0.5
+texture = ExtResource("4_iowc1")
+texture_scale = 0.5
+
+[node name="FeetArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="Feet" type="CollisionShape2D" parent="FeetArea"]
+position = Vector2(-2.32831e-10, -1)
+rotation = 1.572
+shape = SubResource("CapsuleShape2D_2k5m4")
+
+[connection signal="body_entered" from="FeetArea" to="." method="_on_feet_area_body_entered"]

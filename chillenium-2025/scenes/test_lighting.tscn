@@ -7,7 +7,7 @@
 
 [node name="Player" parent="." instance=ExtResource("1_71e5n")]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D2" type="Camera2D" parent="Player"]
 zoom = Vector2(0.9, 0.9)
 
 [node name="ChilleniumTiles" type="Sprite2D" parent="."]

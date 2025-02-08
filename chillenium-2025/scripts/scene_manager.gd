@@ -13,7 +13,7 @@ func _ready() -> void:
 	add_child(menu)
 	
 	await get_tree().create_timer(3).timeout
-	changeScene("res://scenes/test_world.tscn")
+	changeScene("res://scenes/level_0.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -13,4 +13,9 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		Signals.emit_signal("changeScene", "res://scenes/world_2.tscn")
+		
+		var next_level = (get_parent().name)
+		var level_num = int(next_level.substr(next_level.length()-1, 1)) + 1
+		next_level = next_level.left(-1) + "_" + str(level_num)
+		print(next_level)
+		Signals.emit_signal("changeScene", "res://scenes/" + next_level + ".tscn")
