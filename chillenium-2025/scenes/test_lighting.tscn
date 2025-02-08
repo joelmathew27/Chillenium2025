@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cag81bso1nto5"]
+
+[ext_resource type="PackedScene" uid="uid://3nilladdtfq6" path="res://scenes/player.tscn" id="1_71e5n"]
+[ext_resource type="Texture2D" uid="uid://d4c7cjivhyype" path="res://assets/Chillenium Tiles.png" id="2_3ptd1"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_71e5n")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.9, 0.9)
+
+[node name="ChilleniumTiles" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(130, 75)
+scale = Vector2(9.13542, 5.34375)
+texture = ExtResource("2_3ptd1")

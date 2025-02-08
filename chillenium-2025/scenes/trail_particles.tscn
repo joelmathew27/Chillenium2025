@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn0txxr0o6pcp"]
+
+[ext_resource type="Texture2D" uid="uid://colppowvwqhd0" path="res://assets/light (2).png" id="1_khqxl"]
+
+[sub_resource type="Curve" id="Curve_4avn1"]
+_data = [Vector2(0.011236, 0.274725), 0.0, 0.0, 0, 0, Vector2(0.5, 0.0659341), 0.0, 0.0, 0, 0, Vector2(0.988764, 0.032967), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+z_index = 1
+emitting = false
+amount = 60
+lifetime = 4.0
+randomness = 0.49
+fixed_fps = 10
+texture = ExtResource("1_khqxl")
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 0)
+scale_amount_min = 0.03
+scale_amount_max = 0.03
+scale_amount_curve = SubResource("Curve_4avn1")

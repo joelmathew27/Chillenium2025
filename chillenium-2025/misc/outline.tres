@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://wxqrw8npf3fp"]
+
+[ext_resource type="Shader" path="res://misc/outline.gdshader" id="1_cync5"]
+
+[resource]
+shader = ExtResource("1_cync5")
+shader_parameter/on = false
+shader_parameter/width = 2
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = null
+shader_parameter/minimal_flickering_alpha = 0.9
