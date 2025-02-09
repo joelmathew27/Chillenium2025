@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://nuchmsiia2ks"]
+
+[ext_resource type="Shader" path="res://misc/ghost.gdshader" id="1_o2smo"]
+
+[resource]
+shader = ExtResource("1_o2smo")
+shader_parameter/new_color = Color(0.662745, 1, 0.792157, 1)
+shader_parameter/darkness = 0.5
+shader_parameter/flickering_speed = 2.0
+shader_parameter/minimal_flickering_alpha = 0.3

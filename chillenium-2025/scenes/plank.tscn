@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://nag2eswmr66y"]
+[gd_scene load_steps=4 format=3 uid="uid://nag2eswmr66y"]
 
+[ext_resource type="Script" path="res://scripts/plank.gd" id="1_8egy3"]
 [ext_resource type="Texture2D" uid="uid://ba7d04kwhpf8h" path="res://assets/Floor_Plank2.png" id="1_lsu4v"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lyeux"]
+size = Vector2(32, 32)
+
 [node name="Plank" type="Node2D"]
+script = ExtResource("1_8egy3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lsu4v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_lyeux")

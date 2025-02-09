@@ -5,7 +5,7 @@
 [resource]
 shader = ExtResource("1_cync5")
 shader_parameter/on = false
-shader_parameter/width = 2
+shader_parameter/width = 1
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/flickering_speed = null
 shader_parameter/minimal_flickering_alpha = 0.9

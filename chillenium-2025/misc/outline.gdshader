@@ -35,7 +35,7 @@ void fragment() {
 		}else if (on)
 		{
 			COLOR = texture(TEXTURE, UV);
-			COLOR.a = 0.;
+			COLOR.a = 0.5;
 		}
 		else if (!on)
 		{

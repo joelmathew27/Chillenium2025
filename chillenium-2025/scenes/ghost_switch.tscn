@@ -1,0 +1,107 @@
+[gd_scene load_steps=15 format=3 uid="uid://biq1l56bohwun"]
+
+[ext_resource type="Script" path="res://scripts/ghost_switch.gd" id="1_ycv62"]
+[ext_resource type="Texture2D" uid="uid://cjlr6844te181" path="res://assets/Switch_Sprite.png" id="2_c447g"]
+[ext_resource type="Material" uid="uid://nuchmsiia2ks" path="res://misc/ghost_shader.tres" id="2_wopm6"]
+[ext_resource type="AudioStream" uid="uid://da5xsckymcsdp" path="res://assets/lever_sfx.mp3" id="3_stjql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8abxc"]
+atlas = ExtResource("2_c447g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7scvo"]
+atlas = ExtResource("2_c447g")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clovl"]
+atlas = ExtResource("2_c447g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kic83"]
+atlas = ExtResource("2_c447g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74ls6"]
+atlas = ExtResource("2_c447g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x64n"]
+atlas = ExtResource("2_c447g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyyrq"]
+atlas = ExtResource("2_c447g")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4b33"]
+atlas = ExtResource("2_c447g")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbuqm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8abxc")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7scvo")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clovl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kic83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74ls6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x64n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyyrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4b33")
+}],
+"loop": false,
+"name": &"switch",
+"speed": 13.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmb8u"]
+size = Vector2(56, 56)
+
+[node name="GhostSwitch" type="Node2D"]
+script = ExtResource("1_ycv62")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 4
+material = ExtResource("2_wopm6")
+sprite_frames = SubResource("SpriteFrames_wbuqm")
+animation = &"switch"
+frame = 5
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_xmb8u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_stjql")
+volume_db = -10.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

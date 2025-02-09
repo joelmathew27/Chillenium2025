@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cde46vgdac48e"]
+
+[ext_resource type="Material" uid="uid://nuchmsiia2ks" path="res://misc/ghost_shader.tres" id="1_32enj"]
+[ext_resource type="Texture2D" uid="uid://bu4mx6m2b216h" path="res://assets/EmptyWall.png" id="2_2o8vc"]
+
+[node name="Ghost_Wall" type="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("2_2o8vc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 4
+material = ExtResource("1_32enj")
+texture = ExtResource("2_2o8vc")
