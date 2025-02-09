@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpmh12x8xuio0"]
+[gd_scene load_steps=10 format=3 uid="uid://bpmh12x8xuio0"]
 
 [ext_resource type="Script" path="res://scripts/falling_tile.gd" id="1_npf5h"]
 [ext_resource type="Texture2D" uid="uid://sh1ejvd510b0" path="res://assets/Floor_Cobble.png" id="2_mw81c"]
+[ext_resource type="AudioStream" uid="uid://dunybw73pkvdc" path="res://assets/rocks.mp3" id="3_xagsf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b85uu"]
 size = Vector2(32, 32)
@@ -95,6 +96,10 @@ shape = SubResource("RectangleShape2D_idqiw")
 libraries = {
 "": SubResource("AnimationLibrary_wat8x")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xagsf")
+volume_db = -5.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

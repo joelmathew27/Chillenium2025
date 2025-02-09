@@ -1,30 +1,42 @@
 extends CharacterBody2D
 
+
+
 var last_spawned_point : Vector2
 var is_seeing = false
 var is_dead = false
 var cutscene = false
+
+var normal_frames = load("res://misc/player_normal.tres")
+var bleed_frames = load("res://misc/player_bleed.tres")
+
 @export var is_light_enabled = false
+@export var is_bleeding = false
 
 const SPEED = 100.0
 
 func _ready() -> void:
 	$ChilleniumPlayer.play("default")
+	$ChilleniumPlayer.material.set("shader_parameter/on", true)
 	$PointLight2D.enabled = is_light_enabled
 	if Signals.checkpoint_coords:
 		position = Signals.checkpoint_coords
 
 func _process(delta: float) -> void:
 	$PointLight2D.enabled = is_light_enabled
-	if velocity and $AudioStreamPlayer.playing == false:
-		$AudioStreamPlayer.play()
-	elif !velocity:
-		$AudioStreamPlayer.stop()
+	
+	if is_bleeding:
+		$ChilleniumPlayer.sprite_frames = bleed_frames
+	else:
+		$ChilleniumPlayer.sprite_frames = normal_frames
+	
+	
 	if !cutscene:
 		
 		
 		$Eye.visible = is_seeing
 		if is_seeing:
+			$ChilleniumPlayer.play("default")
 			velocity = Vector2.ZERO
 			$ChilleniumPlayer.material.set("shader_parameter/on", false)
 			$Eye.position = get_local_mouse_position()
@@ -39,9 +51,13 @@ func _process(delta: float) -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	if !cutscene:
+
+	
+	if !cutscene :
 	
 		if Input.is_action_just_pressed("use_eye"):
+			if !is_seeing:
+				$Eye/AudioStreamPlayer.play()
 			is_seeing = !is_seeing
 		
 		# Get the input direction and handle the movement/deceleration.

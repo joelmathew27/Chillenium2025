@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://dn4bugt7fg5sc"]
+[gd_scene load_steps=16 format=4 uid="uid://dn4bugt7fg5sc"]
 
 [ext_resource type="Texture2D" uid="uid://b22ipog4h6r10" path="res://assets/White (1).png" id="1_uynnk"]
+[ext_resource type="Script" path="res://scenes/level_2.gd" id="1_vv31i"]
 [ext_resource type="TileSet" uid="uid://b1dcqqff8h3s" path="res://misc/tileset.tres" id="2_0lknt"]
 [ext_resource type="PackedScene" uid="uid://3nilladdtfq6" path="res://scenes/player.tscn" id="3_2tas6"]
 [ext_resource type="Texture2D" uid="uid://fbpbu5vtfco4" path="res://assets/Chillenium Player.png" id="3_0531d"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://nag2eswmr66y" path="res://scenes/plank.tscn" id="9_fai7h"]
 [ext_resource type="PackedScene" uid="uid://cde46vgdac48e" path="res://scenes/ghost_wall.tscn" id="10_og3gx"]
 [ext_resource type="PackedScene" uid="uid://parj07w84ojk" path="res://scenes/checkpoint.tscn" id="11_ie3xd"]
+[ext_resource type="PackedScene" uid="uid://drea0hg4ama38" path="res://scenes/canvas_layer.tscn" id="12_5quhl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_31inw"]
 texture = ExtResource("3_0531d")
@@ -25,6 +27,7 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_31inw")
 
 [node name="Level2" type="Node2D"]
+script = ExtResource("1_vv31i")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0, 0, 0, 1)
@@ -187,3 +190,7 @@ rotation = -1.5708
 [node name="Checkpoint" parent="." instance=ExtResource("11_ie3xd")]
 position = Vector2(-374, 48)
 light = true
+bleed = true
+
+[node name="CanvasLayer" parent="." instance=ExtResource("12_5quhl")]
+text = "Mastering the Maze"

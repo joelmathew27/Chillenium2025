@@ -1,0 +1,120 @@
+[gd_scene load_steps=21 format=3 uid="uid://c8ihxo51ff07c"]
+
+[ext_resource type="Theme" uid="uid://b8ejnfjngklhn" path="res://misc/pause_menu_text.tres" id="1_jnexd"]
+[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="1_lh24m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6w836"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sf4m3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mmwiu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_great"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kmxky"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gpx33"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_viwqr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tqs6w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ywby1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ir6j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4tfbo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhfb5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2slf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j5bee"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82jh7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g02vy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_20rql"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qtyb4"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+visible = false
+top_level = true
+light_mask = 0
+visibility_layer = 1023
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lh24m")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+modulate = Color(1, 1, 1, 0.254902)
+top_level = true
+light_mask = 0
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+top_level = true
+light_mask = 0
+layout_mode = 2
+theme = ExtResource("1_jnexd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6w836")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_sf4m3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_mmwiu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_great")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kmxky")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gpx33")
+text = "Resume"
+flat = true
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+top_level = true
+light_mask = 0
+layout_mode = 2
+theme = ExtResource("1_jnexd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_viwqr")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_tqs6w")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ywby1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0ir6j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4tfbo")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mhfb5")
+text = "Options"
+flat = true
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+top_level = true
+light_mask = 0
+layout_mode = 2
+theme = ExtResource("1_jnexd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d2slf")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j5bee")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_82jh7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g02vy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_20rql")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qtyb4")
+text = "Exit"
+flat = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

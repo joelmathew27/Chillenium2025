@@ -5,14 +5,11 @@ extends CanvasLayer
 
 func _ready() -> void:
 	color_rect.visible = false
-	$Label.visible = false
 	anim_player.animation_finished.connect(_on_animation_finished)
 	
 	
-func transition(label_text : String):
-	$Label.text = label_text
+func transition():
 	color_rect.visible = true
-	$Label.visible = true
 	anim_player.play("fade_to")
 
 func _on_animation_finished(anim_name):
@@ -21,5 +18,4 @@ func _on_animation_finished(anim_name):
 		anim_player.play("fade_out")
 	elif anim_name == "fade_out":
 		color_rect.visible = false
-		$Label.visible = false
 	

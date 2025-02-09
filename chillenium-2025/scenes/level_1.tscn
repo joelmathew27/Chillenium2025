@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://dnru1ktf6nyjy"]
+[gd_scene load_steps=16 format=4 uid="uid://dnru1ktf6nyjy"]
 
 [ext_resource type="Texture2D" uid="uid://b22ipog4h6r10" path="res://assets/White (1).png" id="1_bagli"]
+[ext_resource type="Script" path="res://scenes/level_1.gd" id="1_wb0qb"]
 [ext_resource type="TileSet" uid="uid://b1dcqqff8h3s" path="res://misc/tileset.tres" id="2_jdrpc"]
 [ext_resource type="PackedScene" uid="uid://3nilladdtfq6" path="res://scenes/player.tscn" id="3_727ic"]
 [ext_resource type="Texture2D" uid="uid://fbpbu5vtfco4" path="res://assets/Chillenium Player.png" id="3_qxr5c"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://biq1l56bohwun" path="res://scenes/ghost_switch.tscn" id="8_1psre"]
 [ext_resource type="Theme" uid="uid://nbem4dybs0jw" path="res://misc/text.tres" id="10_dcy21"]
 [ext_resource type="PackedScene" uid="uid://parj07w84ojk" path="res://scenes/checkpoint.tscn" id="11_4h474"]
+[ext_resource type="PackedScene" uid="uid://drea0hg4ama38" path="res://scenes/canvas_layer.tscn" id="12_5wyld"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_55n3e"]
 texture = ExtResource("3_qxr5c")
@@ -25,6 +27,7 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_55n3e")
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_wb0qb")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(144, -178)
@@ -151,3 +154,6 @@ theme = ExtResource("10_dcy21")
 text = "The eye can reveal what's beyond normal comprehension"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="CanvasLayer" parent="." instance=ExtResource("12_5wyld")]
+text = "Trials of Trickery"

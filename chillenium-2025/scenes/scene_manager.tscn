@@ -5,10 +5,11 @@
 [ext_resource type="AudioStream" uid="uid://cmjm0qmv35w2o" path="res://assets/track1.wav" id="3_cohuk"]
 
 [node name="SceneManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_c4jej")
 
 [node name="TransitionScreen" parent="." instance=ExtResource("2_d52e6")]
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_cohuk")
-volume_db = 15.0
+volume_db = 10.0

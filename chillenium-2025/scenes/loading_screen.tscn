@@ -1,6 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0ix5t8gvtavs"]
+[gd_scene load_steps=6 format=3 uid="uid://c0ix5t8gvtavs"]
 
 [ext_resource type="Texture2D" uid="uid://dcncwskv423ah" path="res://assets/Loading Screen_Itch.png" id="1_yir2e"]
+[ext_resource type="Texture2D" uid="uid://srqgdsjtq52k" path="res://assets/FFS_Logo.png" id="2_tbeuu"]
+
+[sub_resource type="Animation" id="Animation_idh78"]
+resource_name = "logos"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoadingScreenItch:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rac4d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoadingScreenItch:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bi3qf"]
+_data = {
+"RESET": SubResource("Animation_rac4d"),
+"logos": SubResource("Animation_idh78")
+}
 
 [node name="LoadingScreen" type="Control"]
 layout_mode = 3
@@ -10,7 +48,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.519419, 0.761546, 0.745494, 1)
+
+[node name="FfsLogo" type="Sprite2D" parent="."]
+position = Vector2(315, 255)
+scale = Vector2(0.615, 0.615)
+texture = ExtResource("2_tbeuu")
+
 [node name="LoadingScreenItch" type="Sprite2D" parent="."]
 position = Vector2(320, 180)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_yir2e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bi3qf")
+}

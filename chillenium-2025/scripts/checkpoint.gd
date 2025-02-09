@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var light := false
+@export var bleed := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,3 +19,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		Signals.checkpoint_coords = position
 		
 		body.is_light_enabled = light
+		body.is_bleeding = bleed
