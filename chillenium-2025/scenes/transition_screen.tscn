@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bctjd8lpl8h0j"]
+[gd_scene load_steps=7 format=3 uid="uid://bctjd8lpl8h0j"]
 
 [ext_resource type="Script" path="res://scripts/transition_screen.gd" id="1_8c36t"]
+[ext_resource type="FontFile" uid="uid://djx5y6e6jmthr" path="res://assets/Ancient Medium.ttf" id="2_2x1m4"]
 
 [sub_resource type="Animation" id="Animation_klhh4"]
 length = 0.001
@@ -107,5 +108,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_2x1m4")
+theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1

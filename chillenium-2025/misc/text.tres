@@ -1,4 +1,7 @@
-[gd_resource type="Theme" format=3 uid="uid://nbem4dybs0jw"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://nbem4dybs0jw"]
+
+[ext_resource type="FontFile" uid="uid://danswensf1f40" path="res://assets/Salium.ttf" id="1_s024r"]
 
 [resource]
-default_font_size = 5
+default_font = ExtResource("1_s024r")
+default_font_size = 9

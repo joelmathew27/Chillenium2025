@@ -3,8 +3,15 @@ extends Node
 @onready var audio_player = $AudioPlayer
 @onready var transition = $TransitionScreen
 
+
+var song := 0
+var song1 = load("res://assets/track1.wav")
+var song2 = load("res://assets/track1.wav")
+#var song3 = load()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	audio_player.stream = song1
 	audio_player.play()
 	Signals.changeScene.connect(changeScene)
 	Signals.transition.connect(callTransition)
@@ -14,11 +21,22 @@ func _ready() -> void:
 	add_child(menu)
 	
 	await get_tree().create_timer(3).timeout
-	changeScene("res://scenes/level_0.tscn")
+	changeScene("res://scenes/main_menu.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	match song:
+		0: pass
+		1: 
+			if audio_player.stream != song2:
+				audio_player.stop()
+				audio_player.stream = song2
+				audio_player.play()
+		#2: 
+			#if audio_player.stream != song3:
+				#audio_player.stop()
+				#audio_player.stream = song3
+				#audio_player.play()
 
 func changeScene(filepath : String):
 	var temp_scene = load(filepath).instantiate()
@@ -27,21 +45,23 @@ func changeScene(filepath : String):
 	#print(temp_scene.name)
 	if temp_scene.name.substr(0, 5) == "Level":
 		temp_string = temp_scene.name
-	
+	var new_string = ""
 	match(temp_string):
 		"Level0":
-			temp_string = "The Beginning"
+			new_string = "The Beginning"
 		"Level1":
-			temp_string = "Trials of Trickery"
+			new_string = "Trials of Trickery"
 		"Level2":
-			temp_string = "Mastering the Maze"
+			new_string = "Mastering the Maze"
+			song += 1
 		"Level3":
-			temp_string = "Nearing a Close"
+			new_string = "Nearing a Close"
 		"Level4":
-			temp_string = "The End in Sight"
+			new_string = "The End in Sight"
+			song += 1
 	
 	
-	callTransition(Color(0,0,0), temp_string)
+	callTransition(Color(0,0,0), new_string)
 	await Signals.onTransitionFinished
 	
 	get_child(2).name = "to be deleted"

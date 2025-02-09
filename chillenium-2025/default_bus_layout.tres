@@ -1,0 +1,19 @@
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://c5hterxe4x0v3"]
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_o777p"]
+resource_name = "Chorus"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_hkvdq"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_o12px"]
+resource_name = "Distortion"
+
+[resource]
+bus/0/volume_db = 0.0672607
+bus/0/effect/0/effect = SubResource("AudioEffectChorus_o777p")
+bus/0/effect/0/enabled = false
+bus/0/effect/1/effect = SubResource("AudioEffectReverb_hkvdq")
+bus/0/effect/1/enabled = false
+bus/0/effect/2/effect = SubResource("AudioEffectDistortion_o12px")
+bus/0/effect/2/enabled = false

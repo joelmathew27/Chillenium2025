@@ -16,6 +16,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	$PointLight2D.enabled = is_light_enabled
+	if velocity and $AudioStreamPlayer.playing == false:
+		$AudioStreamPlayer.play()
+	elif !velocity:
+		$AudioStreamPlayer.stop()
 	if !cutscene:
 		
 		

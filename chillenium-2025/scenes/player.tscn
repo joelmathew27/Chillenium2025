@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://3nilladdtfq6"]
+[gd_scene load_steps=35 format=3 uid="uid://3nilladdtfq6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_i3mis"]
 [ext_resource type="Material" uid="uid://wxqrw8npf3fp" path="res://misc/outline.tres" id="2_5xrop"]
@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bn0txxr0o6pcp" path="res://scenes/trail_particles.tscn" id="5_sg7py"]
 [ext_resource type="Texture2D" uid="uid://qy8kice1qcny" path="res://assets/MC_Rear_Walk-Sheet.png" id="6_fnwxl"]
 [ext_resource type="Texture2D" uid="uid://bqd788b3ajd37" path="res://assets/Chillenium_Eye.png" id="7_u3k8n"]
-[ext_resource type="Script" path="res://camera_2d.gd" id="10_me47m"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="10_me47m"]
+[ext_resource type="AudioStream" uid="uid://bepk27ug2ecay" path="res://assets/walking_wood.wav" id="11_3haqm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_shyoj"]
 atlas = ExtResource("4_3vofn")
@@ -246,6 +247,7 @@ shape = SubResource("CapsuleShape2D_ty0gw")
 
 [node name="Eye" type="Sprite2D" parent="."]
 visible = false
+light_mask = 0
 position = Vector2(0, -61)
 texture = ExtResource("7_u3k8n")
 
@@ -254,7 +256,7 @@ light_mask = 0
 color = Color(1, 1, 0.909804, 1)
 range_item_cull_mask = 7
 texture = ExtResource("4_iowc1")
-texture_scale = 0.5
+texture_scale = 0.55
 
 [node name="CPUParticles2D" parent="." instance=ExtResource("5_sg7py")]
 light_mask = 0
@@ -286,5 +288,9 @@ shape = SubResource("CapsuleShape2D_2k5m4")
 libraries = {
 "": SubResource("AnimationLibrary_xn1sd")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_3haqm")
+volume_db = 10.0
 
 [connection signal="body_entered" from="FeetArea" to="." method="_on_feet_area_body_entered"]
